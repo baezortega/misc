@@ -17,8 +17,6 @@ as a table to a separate output text file.
 
 import sys
 import gzip
-import os
-import re
 
 
 # Constant: position of FORMAT field in VCF
