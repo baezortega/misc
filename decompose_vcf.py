@@ -41,7 +41,7 @@ if len(sys.argv) < 2:
     print 'as a table to a separate output text file.'
     print '\nInput: Path to input VCF (.vcf) or gzipped VCF (.vcf.gz) file.'
     print '       [Optional] List of value names of interest (as shown in the FORMAT field)'
-    print '\nUsage: decompose_vcf.py /path/to/file.vcf.gz [GT GL NR NV ...]\n'
+    print '\nUsage: decompose_vcf.py /path/to/file.vcf[.gz] [GT GL NR NV ...]\n'
     sys.exit(0)
 
 
