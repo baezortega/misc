@@ -26,9 +26,9 @@ FORMAT_COL = 8
 # Helper function: open a VCF or gzipped VCF file
 def open_vcf(vcf_path, gzipped):
     if gzipped:
-        return open(vcf_path, 'r')
-    else:
         return gzip.open(vcf_path, 'r')
+    else:
+        return open(vcf_path, 'r')
 
 
 # If not 1 argument: print help
@@ -66,7 +66,7 @@ else:
 
 # If value names are specified, check that they appear in the FORMAT field
 # If no value names are specified, retrieve all names from FORMAT field
-with open_vcf(vcf_path, 'r') as vcf:
+with open_vcf(vcf_path, gzipped) as vcf:
     line = vcf.readline()
     while line.startswith('#'):
         line = vcf.readline()
@@ -110,17 +110,17 @@ try:
     # Open all output files as a list of file descriptors
     out = [open(of, 'w') for of in out_files]
 
-    with open_vcf(vcf_path, 'r') as vcf:
+    with open_vcf(vcf_path, gzipped) as vcf:
         for line in vcf:
             if not line.startswith('##'):
                 
                 cols = line.strip().split('\t')
                 
                 # Copy column header to output files
-                if 'POS' in cols[1]:
+                if cols[0] == '#CHROM':
                     header_meta = cols[:FORMAT_COL]
                     header_samples = cols[FORMAT_COL+1:]
-                    out[-1].write('\t'.join(header_meta) + '\n')
+                    out[-1].write('\t'.join(header_meta)[1:] + '\n')
                     for of in out[:-1]:
                         of.write('\t'.join(header_samples) + '\n')
                 
