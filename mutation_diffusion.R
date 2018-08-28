@@ -125,7 +125,7 @@ g.diff.long = cbind("N"=rep(Ns, each=M),
 # Plot distribution
 plot3d(x=g.diff.long[,1],
        y=g.diff.long[,2],
-       main=bquote(italic("f")["T"] ~ "=" ~ 0.01))
+       main=bquote(italic("f")["t"] ~ "=" ~ 0.01))
 
 
 # b) Plot distribution of the time to mutation loss for ft=0.05
@@ -136,4 +136,4 @@ g.loss.long = cbind("N"=rep(Ns, each=M),
 # Plot distribution
 plot3d(x=g.loss.long[,1],
        y=g.loss.long[,2],
-       main=bquote("Time until mutation loss (" * italic("f")["T"] ~ "=" ~ 0.05 * ")"))
+       main=bquote("Time until mutation loss (" * italic("f")["t"] ~ "=" ~ 0.05 * ")"))
